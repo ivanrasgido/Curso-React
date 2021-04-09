@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { Route , Switch ,Redirect } from 'react-router';
 import NavBar from './components/NavBar';
 import Products from './components/products';
 import ProductDetails from './components/productDetails';
 import Home from './components/home';
 import Posts from './components/posts';
 import NotFound from './components/notFound';
-import { Route } from 'react-router';
 import Dashboard from './components/admin/dashboard';
 import './App.css';
 
@@ -16,11 +16,18 @@ class App extends Component {
       <div>
         <NavBar />
         <div className="content">
-
-          <Route path="/products" component={Products} />
-          <Route path="/posts" component={Posts} />
+        <Switch>
+          <Route path="/products/:id" component={ProductDetails}/>
+          <Route path="/products" render={(props) => <Products sortBy="newest" {...props} />} />
+          <Route path="/posts/:year?/:month?" component={Posts} />
           <Route path="/admin" component={Dashboard} />
-          <Route path="/" component={Home} />
+          <Route path="/not-found" component={NotFound}/>
+          <Route path="/" exact component={Home} />
+          <Redirect to="/not-found" />
+        </Switch>
+          
+       
+          
         </div>
 
       </div>
