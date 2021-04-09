@@ -22,17 +22,6 @@ class LoginForm extends Form {
     };
 
    
-    handleSubmit = e => {
-        e.preventDefault();
-
-        const errors = this.validate();
-  
-        this.setState({ errors: errors || {} });
-
-        if(errors) return;
-
-        this.doSubmit();
-    };
     
     doSubmit = () => {
         //Call the server
@@ -43,8 +32,6 @@ class LoginForm extends Form {
  
 
     render() { 
-
-       
 
         return <div>
             <h1>Login</h1>
