@@ -95,6 +95,8 @@ class Movies extends Component {
 
         const { totalCount , data: movies } = this.getPageData();
 
+        const { user } = this.props;
+
         if( count === 0)
             return <p>There are no movies in the database</p>;
 
@@ -114,13 +116,13 @@ class Movies extends Component {
                 <div className="col">
                      
                           
-                        <Link 
+                        { user &&(<Link 
                         to="/movies/new"
                         className="btn btn-primary"
                         style={{ marginBotton:20 }}
                         >
                         New Movie
-                        </Link>
+                        </Link>)}
                         
                        
                         <p>Showing {totalCount} movies in the database.</p>
